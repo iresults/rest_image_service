@@ -1,0 +1,85 @@
+{
+    "modules": [
+        {
+            "config": {
+                "position": [
+                    337,
+                    200
+                ]
+            },
+            "name": "New Model Object",
+            "value": {
+                "actionGroup": {
+                    "_default0_list": false,
+                    "_default1_show": false,
+                    "_default2_new_create": false,
+                    "_default3_edit_update": false,
+                    "_default4_delete": false,
+                    "customActions": []
+                },
+                "name": "Image",
+                "objectsettings": {
+                    "addDeletedField": true,
+                    "addHiddenField": true,
+                    "addStarttimeEndtimeFields": true,
+                    "aggregateRoot": false,
+                    "categorizable": false,
+                    "description": "",
+                    "mapToTable": "",
+                    "parentClass": "",
+                    "sorting": false,
+                    "type": "Entity",
+                    "uid": "903788130141"
+                },
+                "propertyGroup": {
+                    "properties": []
+                },
+                "relationGroup": {
+                    "relations": []
+                }
+            }
+        }
+    ],
+    "properties": {
+        "backendModules": [],
+        "description": "Service to retrieve images in different sizes",
+        "emConf": {
+            "category": "services",
+            "custom_category": "",
+            "dependsOn": "typo3 => 7.6.0-7.6.99\n",
+            "disableLocalization": true,
+            "disableVersioning": true,
+            "skipGenerateDocumentationTemplate": true,
+            "sourceLanguage": "en",
+            "state": "alpha",
+            "targetVersion": "7.6.0-7.6.99",
+            "version": ""
+        },
+        "extensionKey": "rest_image_service",
+        "name": "REST Image Service",
+        "originalExtensionKey": "",
+        "originalVendorName": "",
+        "persons": [
+            {
+                "company": "iresults GmbH",
+                "email": "tma@iresults.li",
+                "name": "Andreas Thurnheer-Meier",
+                "role": "Developer"
+            },
+            {
+                "company": "iresults GmbH",
+                "email": "cod@iresults.li",
+                "name": "Daniel Corn",
+                "role": "Developer"
+            }
+        ],
+        "plugins": [],
+        "vendorName": "Iresults"
+    },
+    "wires": [],
+    "log": {
+        "last_modified": "2017-02-08 01:43",
+        "extension_builder_version": "7.6.0",
+        "be_user": "Daniel Corn (1)"
+    }
+}

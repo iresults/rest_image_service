@@ -1,0 +1,35 @@
+{
+  "name": "iresults/rest_image_service",
+  "type": "typo3-cms-extension",
+  "description": "REST API for TYPO3 CMS",
+  "keywords": [
+    "typo3cms",
+    "rest",
+    "webservice",
+    "service",
+    "image"
+  ],
+  "require": {
+    "php": "^7.0"
+  },
+  "authors": [
+    {
+      "name": "Andreas Thurnheer-Meier",
+      "email": "tma@iresults.li"
+    },
+    {
+      "name": "Daniel Corn",
+      "email": "cod@iresults.li"
+    }
+  ],
+  "license": "GPL-2.0+",
+  "autoload": {
+    "psr-4": {
+      "Iresults\\RestImageService\\": "Classes/"
+    }
+  },
+  "replace": {
+    "rest_image_service": "self.version",
+    "typo3-ter/rest_image_service": "self.version"
+  }
+}
