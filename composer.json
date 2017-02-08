@@ -1,7 +1,7 @@
 {
   "name": "iresults/rest_image_service",
   "type": "typo3-cms-extension",
-  "description": "REST API for TYPO3 CMS",
+  "description": "Service to retrieve images in different sizes",
   "keywords": [
     "typo3cms",
     "rest",

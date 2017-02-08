@@ -174,9 +174,12 @@ class Handler implements HandlerInterface
     public function configureRoutes(RouterInterface $router, RestRequestInterface $request)
     {
         $router->routeGet(
-            $request->getResourceType(),
-            function (RestRequestInterface $request) {
-                return 'hello';
+            $request->getResourceType() . '/?',
+            function () {
+                return [
+                    'usage' => '/rest/image_service/{dimensions}/{image_uid}',
+                    'example' => '/rest/image_service/200cx200c/36',
+                ];
             }
         );
         $router->routeGet(

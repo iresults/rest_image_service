@@ -1,8 +1,14 @@
-plugin.tx_rest.settings.paths {
-    iresults-rest_image_service {
-        path = iresults-rest_image_service-*
+plugin.tx_rest.settings {
+    paths {
+        iresults-rest_image_service {
+            path = iresults-rest_image_service-*
 
-        read = allow
-        write = deny
+            read = allow
+            write = deny
+        }
+    }
+
+    aliases {
+        image_service = iresults-rest_image_service-handler
     }
 }
