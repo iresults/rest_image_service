@@ -162,6 +162,7 @@ class Handler implements HandlerInterface
     {
         return [
             '200cx200c',
+            '275cx275c',
         ];
     }
 
