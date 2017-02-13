@@ -97,15 +97,16 @@ class Handler implements HandlerInterface
 
     /**
      * @param string $uri
+     * @param bool   $permanent
      * @param int    $delay
      * @return ResponseInterface
      */
-    private function redirect(string $uri, $delay = 0)
+    private function redirect(string $uri, $permanent = true, $delay = 0)
     {
         $escapedUri = htmlentities($uri, ENT_QUOTES, 'utf-8');
         $response = $this->responseFactory->createResponse(
             '<html><head><meta http-equiv="refresh" content="' . (int)$delay . ';url=' . $escapedUri . '"/></head></html>',
-            303
+            $permanent ? 301 : 303
         );
 
         return $response->withHeader('Location', (string)$uri);
@@ -119,15 +120,28 @@ class Handler implements HandlerInterface
     {
         if (!in_array($sizeDefinition, $this->getAllowedImageSizes())) {
             throw new \UnexpectedValueException(
-                sprintf('Image size definition %s is not in the list of allowed sizes', $sizeDefinition)
+                sprintf('Image size definition %s is not in the list of allowed sizes', $sizeDefinition),
+                1486982910
             );
         }
 
-        list($width, $height) = explode('x', $sizeDefinition);
+        if (!preg_match_all('!^(\d+(c|m)?)(x(\d+(c|m)?))?!', $sizeDefinition, $matches)) {
+            throw new \UnexpectedValueException(
+                sprintf('Malformed size definition %s', $sizeDefinition),
+                1486983730
+            );
+        }
+
+        $groups = array_map(
+            function ($m) {
+                return $m[0];
+            },
+            $matches
+        );
 
         return [
-            $this->prepareImageSizeValue($width),
-            $this->prepareImageSizeValue($height),
+            $groups[1],
+            $groups[4],
         ];
     }
 
@@ -163,6 +177,9 @@ class Handler implements HandlerInterface
         return [
             '200cx200c',
             '275cx275c',
+            '400mx200c',
+            '400cx200c',
+            '400m',
         ];
     }
 
@@ -178,7 +195,7 @@ class Handler implements HandlerInterface
             $request->getResourceType() . '/?',
             function () {
                 return [
-                    'usage' => '/rest/image_service/{dimensions}/{image_uid}',
+                    'usage'   => '/rest/image_service/{dimensions}/{image_uid}',
                     'example' => '/rest/image_service/200cx200c/36',
                 ];
             }
@@ -216,7 +233,8 @@ class Handler implements HandlerInterface
                         'File #%d is not an image but of type "%s"',
                         $imageUid,
                         $file->getMimeType()
-                    )
+                    ),
+                    1486982919
                 )
             );
 
