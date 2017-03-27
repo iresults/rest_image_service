@@ -179,6 +179,7 @@ class Handler implements HandlerInterface
             '275cx275c',
             '400mx200c',
             '400cx200c',
+            '370mx555m',
             '400m',
         ];
     }
