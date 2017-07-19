@@ -12,6 +12,7 @@ namespace Iresults\RestImageService\Rest;
 
 use Cundd\Rest\Dispatcher;
 use Cundd\Rest\Handler\HandlerInterface;
+use Cundd\Rest\Http\Header;
 use Cundd\Rest\Http\RestRequestInterface;
 use Cundd\Rest\ResponseFactoryInterface;
 use Cundd\Rest\Router\RouterInterface;
@@ -109,7 +110,7 @@ class Handler implements HandlerInterface
             $permanent ? 301 : 303
         );
 
-        return $response->withHeader('Location', (string)$uri);
+        return $response->withHeader('Location', (string)$uri)->withHeader(Header::CUNDD_REST_NO_CACHE, 'true');
     }
 
     /**
