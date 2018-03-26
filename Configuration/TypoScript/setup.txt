@@ -5,6 +5,7 @@ plugin.tx_rest.settings {
 
             read = allow
             write = deny
+            handlerClass = \Iresults\RestImageService\Rest\Handler
         }
     }
 
